@@ -1,0 +1,21 @@
+{
+  "name": "",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Red-lipped batfish",
+  "license": "ISC",
+  "scripts": {
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "nodemon server/server.js",
+    "client": "npm start --prefix client"
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2",
+    "react-cookie": "^7.1.4",
+    "sass": "^1.77.5",
+    "sass-loader": "^14.2.1"
+  },
+  "devDependencies": {
+    "webpack-cli": "^5.1.4"
+  }
+}
