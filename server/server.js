@@ -2,8 +2,10 @@ const express = require('express');
 // const { restart } = require('nodemon');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const path = require('path');
 const routerSignup = require('./routes/users');
 const applicationsRouter = require('./routes/applications');
+const applicationController = require('./controllers/applicationsController');
 
 const app = express();
 // const path = require('path');
@@ -29,7 +31,7 @@ app.use('/applications', applicationsRouter);
 // Global error handler: 
 app.use((err, req, res, next) => {
   const defaultErr = {
-    log: 'Express error handler caught unknown middleware error',
+    log: 'Express error handler caught middleware error',
     status: 500,
     message: { err: 'An error occurred' },
   };
@@ -37,6 +39,7 @@ app.use((err, req, res, next) => {
   console.log(errorObj.log);
   return res.status(errorObj.status).json(errorObj.message);
 });
+
 
 
 app.listen((3000), ()=> {
