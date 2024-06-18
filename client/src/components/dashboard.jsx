@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import ApplicationList from './application-list-component/application-list.jsx';
 import Sidebar from './sidebar';
+import jobhub from '../assets/jobhub.png'
 
 const dashboard = () => {
   const [formData, setFormData] = useState({
@@ -76,6 +77,7 @@ const dashboard = () => {
 
   return (
     <div className='main'>
+      <br></br>
       {/* <h1 className='header'>JobHub</h1> */}
       <div className='dashboard-top-container'> 
         <div className='form_box'>
@@ -184,6 +186,9 @@ const dashboard = () => {
             <button type='submit' className='btn'>
               Submit
             </button>
+
+            {message !== ''? (<div style={ {color : "green"} }>{message}</div>):(<></>)}
+            {error !== ''? (<div style={ {color : "red"} }>{error}</div>):(<></>)}
 
           </form>
           <ApplicationList />
