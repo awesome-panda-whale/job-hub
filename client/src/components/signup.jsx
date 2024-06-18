@@ -4,7 +4,7 @@ import './styleCSS/signup.css'
 import jobhub from '../assets/jobhub.png'
 
 const Signup = () => {
-  // let navigate = useNavigate();
+  let navigate = useNavigate();
   const handleClick = () => {
     navigate('/');
   };
