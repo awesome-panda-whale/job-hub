@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import './style CSS/login.css'
+import './styleCSS/login.css'
 import jobhub from '../assets/jobhub.png'
 
 
@@ -64,7 +64,7 @@ const Login = () => {
           <br></br>
           Password{' '}
           {/* onChange={storePassword} */}
-          <input type='text' id='passwordInput'></input>
+          <input type='password' id='passwordInput'></input>
           <button type='submit' id='loginButton' onClick={loginAccount}>Login!</button>
         </form>
       </div>
