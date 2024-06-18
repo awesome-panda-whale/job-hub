@@ -1,7 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-// import './styles.css';
+import './style CSS/login.css'
+import jobhub from '../assets/jobhub.png'
+
 
 const Login = () => {
   let navigate = useNavigate();
@@ -50,28 +52,23 @@ const Login = () => {
 
   return (
     <div className='login-container'>
-      <div>
-        Login
+      <div className='jobhub'>
+        <img src={jobhub} alt="" />
+      </div>
+      <h1>Welcome! 🤟</h1>
+      <div className='form-container'>
         <form /*onSubmit={handleSubmit}*/ id='loginform'>
-          username:{' '}
-          <input
-            type='text'
-            id='usernameInput' /*onChange={storeUsername}*/
-          ></input>
+          Username{' '}
+          {/* onChange={storeUsername} */}
+          <input type='text'id='usernameInput'></input>
           <br></br>
-          password:{' '}
-          <input
-            type='text'
-            id='passwordInput' /*onChange={storePassword}*/
-          ></input>
-          <button type='submit' id='loginButton' onClick={loginAccount}>
-            login!
-          </button>
+          Password{' '}
+          {/* onChange={storePassword} */}
+          <input type='password' id='passwordInput'></input>
+          <button type='submit' id='loginButton' onClick={loginAccount}>Login!</button>
         </form>
       </div>
-      <button onClick={handleClick} id='signup'>
-        sign up
-      </button>
+      <button onClick={handleClick} id='signup'>Create an Account</button>
     </div>
   );
 };
