@@ -64,7 +64,7 @@ const Login = () => {
           <br></br>
           Password{' '}
           {/* onChange={storePassword} */}
-          <input type='text' id='passwordInput'></input>
+          <input type='password' id='passwordInput'></input>
           <button type='submit' id='loginButton' onClick={loginAccount}>Login!</button>
         </form>
       </div>
