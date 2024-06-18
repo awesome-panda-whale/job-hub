@@ -1,16 +1,12 @@
 const express = require('express');
-// const { restart } = require('nodemon');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const userController = require('./controllers/userController');
-const db = require('./models/userModels')
-// const routerSignup = require('./routes/users');
-const userRoutes = require("./routes/users");
+const userRoutes = require('./routes/users');
+const db = require('./models/userModels');
 
 const app = express();
-// const path = require('path');
 
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());
 app.use("/", userRoutes);

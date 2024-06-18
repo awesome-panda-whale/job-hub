@@ -2,7 +2,7 @@ const express = require('express');
 const applicationController = require('../controllers/applicationsController');
 const applicationsRouter = express.Router();
 
-applicationsRouter.post('/', applicationController.createApp, (req, res) => {
+applicationsRouter.post('/submitForm', applicationController.createApp, (req, res) => {
     return res.status(200).json(res.locals.createApp);
 });
 

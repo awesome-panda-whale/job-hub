@@ -1,53 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
-import './style CSS/login.css'
-import jobhub from '../assets/jobhub.png'
-
+import './styleCSS/login.css';
+import jobhub from '../assets/jobhub.png';
 
 const Login = () => {
   let navigate = useNavigate();
-  const handleClick = () => {
-    navigate('users/signup');
-  };
 
-  async function loginAccount(event) {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const loginAccount = async (event) => {
     event.preventDefault();
 
-    const newUsername = document.getElementById('usernameInput');
-    const newPassword = document.getElementById('passwordInput');
-    // console.log(newUsername.value);
-    // console.log(newPassword.value);
-
     try {
-      console.log('before fetch');
-      const response = await fetch('http://localhost:3000/users/login', {
+      console.log("Attempting to log in with:", username, password);
+
+      const response = await fetch('http://localhost:3000/login', { // Ensure this is the correct endpoint
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
         },
         method: 'POST',
         body: JSON.stringify({
-          username: newUsername.value,
-          password: newPassword.value,
+          username: username,
+          password: password,
         }),
       });
-      console.log('response ', response);
-      const data = await response.json();
-      if (data) {
-        navigate('/users/dashboard');
+
+      console.log('Response:', response);
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+        // if (data) {
+        //   navigate('/dashboard');
+        // }
+      } else {
+        console.error('Failed to login, status:', response.status);
       }
-      console.log(data);
     } catch (err) {
+      console.error('Error during fetch:', err);
       alert('bad');
     }
-    // .then((data) => data.json())
-    // .then((data) => {
-    //   console.log('this is fetch response', data);
-    // })
-    // .catch(function (res) {
-    //   alert('bad');
-    // });
   }
 
   return (
@@ -57,18 +50,23 @@ const Login = () => {
       </div>
       <h1>Welcome! 🤟</h1>
       <div className='form-container'>
-        <form /*onSubmit={handleSubmit}*/ id='loginform'>
-          Username{' '}
-          {/* onChange={storeUsername} */}
-          <input type='text'id='usernameInput'></input>
-          <br></br>
-          Password{' '}
-          {/* onChange={storePassword} */}
-          <input type='text' id='passwordInput'></input>
-          <button type='submit' id='loginButton' onClick={loginAccount}>Login!</button>
+        <form id='loginform' onSubmit={loginAccount}>
+          <input 
+            type='text' 
+            value={username} 
+            onChange={(uv) => setUsername(uv.target.value)} 
+            placeholder='Username'
+          />
+          <input 
+            type='password' 
+            value={password} 
+            onChange={(pv) => setPassword(pv.target.value)} 
+            placeholder='Password'
+          />
+          <button type='submit' id='loginButton'>Login!</button>
         </form>
       </div>
-      <button onClick={handleClick} id='signup'>Create an Account</button>
+      <button onClick={() => navigate('/signup')} id='signup'>Create an Account</button>
     </div>
   );
 };

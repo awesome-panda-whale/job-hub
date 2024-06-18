@@ -2,5 +2,6 @@
 /server/node_modules
 node_modules
 .DS_Store
-/client/package-lock.json
 /server/package-lock.json
+/client/package-lock.json
+package-lock.json
