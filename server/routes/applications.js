@@ -2,11 +2,11 @@ const express = require('express');
 const applicationController = require('../controllers/applicationsController');
 const applicationsRouter = express.Router();
 
-applicationsRouter.post('/', applicationController.createApp, (req, res) => {
+applicationsRouter.post('/application', applicationController.createApp, (req, res) => {
     return res.status(200).json(res.locals.createApp);
 });
 
-applicationsRouter.get('/:id', applicationController.getApp, (req, res) => {
+applicationsRouter.get('/application/:id', applicationController.getApp, (req, res) => {
     return res.status(200).json(res.locals.getApp);
 });
 
