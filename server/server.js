@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const routerSignup = require('./routes/users');
-const applicationsRouter = require('./routes/applications');
+const applicationController = require('./controllers/applicationsController');
 
 const app = express();
 // const path = require('path');
@@ -24,8 +24,10 @@ app.get('/*', function(req, res){
 })
 
 app.use('/users', routerSignup);
-app.use('/applications', applicationsRouter);
-
+app.post('/application', applicationController.createApp,  (req, res ) => {
+  res.status(200).json(res.locals.application)
+});
+app.get('/application/:userID, ')
 // Global error handler: 
 app.use((err, req, res, next) => {
   const defaultErr = {
