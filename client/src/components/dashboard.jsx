@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import ApplicationList from './application-list-component/application-list.jsx';
 import Sidebar from './sidebar';
+import jobhub from '../assets/jobhub.png'
 
 const dashboard = () => {
   const [dateApplied, setDateApplied] = useState('');
@@ -24,16 +25,20 @@ const dashboard = () => {
 
   return (
     <div className='main'>
+      <br></br>
       {/* <h1 className='header'>JobHub</h1> */}
       <div className='dashboard-top-container'> 
         <div className='form_box'>
+          <div className='jobhub'>
+           <img src={jobhub} alt="" />
+          </div>
           <form className='inputs'>
             {' '}
-            Job Application Form:
+            Job Application Form
             <input
               type='text'
-              className='company_name'
-              placeholder='Company Name: '
+              className='placeholderText'
+              placeholder='Company Name '
             ></input>
             <input
               type='date'
@@ -49,15 +54,26 @@ const dashboard = () => {
                 <option value='' disabled selected hidden>
                   Select App Status...
                 </option>
+                <option value='Need to Apply'>Need to Apply</option>
                 <option value='Applied'>Applied</option>
-                <option value='Intial Interview'>Inital Interview</option>
+                <option value='Phone Interview'>Phone Interview</option>
+                <option value='Online Assessment'>Online Assessment</option>
+                <option value='Initial Interview'>Initial Interview</option>
                 <option value='Second Interview'>Second Interview</option>
+                <option value='Third Interview'>Third Interview</option>
+                <option value='Technical Interview'>Technical Interview</option>
+                <option value='Behavioral Interview'>Behavioral Interview</option>
+                <option value='Final Interview'>Final Interview</option>
+                <option value='Have not heard back'>Have not heard back</option>
+                <option value='Considering'>Considering</option>
+                <option value='Offer'>Offer</option>
                 <option value='Rejected'>Rejected</option>
-                <option value='Have not heard back'>Have not heard Back</option>
+                <option value='Ghost'>Ghost</option>
                 <option value='Other'>Other</option>
+                <option value='STOP'>STOP</option>
               </select>
             </form>
-            <input type='text' className='role' placeholder='Role: '></input>
+            <input type='text' className='placeholderText' placeholder='Position '></input>
             <button type='submit' className='btn' onSubmit={handleSubmit}>
               Submit
             </button>
@@ -67,7 +83,7 @@ const dashboard = () => {
         <Sidebar />
         
       </div>
-      
+      <br></br>
     </div>
   );
 };
