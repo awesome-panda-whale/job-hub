@@ -1,0 +1,77 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  /* Login container */
+  .login-container {
+    background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
+    padding: 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px); /* Adds a blur effect */
+    -webkit-backdrop-filter: blur(10px); /* For Safari */
+    width: 300px;
+    text-align: center;
+  }
+  
+  .login-container h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333333;
+  }
+  
+  /* Form styles */
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  form input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+  }
+  
+  form button {
+    width: 86%;
+    padding: 10px;
+    margin: 20px 0 10px 0;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  form button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Signup button */
+  #signup {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #signup:hover {
+    background-color: #0056b3;
+  }
+
+  .form-container {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+  }

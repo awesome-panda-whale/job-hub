@@ -15,7 +15,6 @@ module.exports = {
       {
         test: /\.jsx?/,
         exclude: /node_modules/,
-        
         use: {
           loader: 'babel-loader',
           options: {
@@ -28,6 +27,18 @@ module.exports = {
         test: /\.s?css/,
       
         use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'images/',
+            },
+          },
+        ],
       },
     ],
   },
