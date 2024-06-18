@@ -1,9 +1,6 @@
 # job-app
 Tracking Job Applications for Applicants
 
-
-
-
 CREATE TABLE Users ( 
   id SERIAL PRIMARY KEY, 
   username VARCHAR(255) UNIQUE NOT NULL, 
