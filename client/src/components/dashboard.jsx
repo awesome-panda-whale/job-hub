@@ -35,15 +35,6 @@ const dashboard = () => {
     { id: 16, status: 'Other' },
     { id: 17, status: 'STOP' }
   ]);
-  
-
-  // handle getting status
-  // useEffect(() => {
-  //   fetch('http://localhost:3000/api/getStatus')
-  //   .then(response => response.json())
-  //   .then(data => setStatuses(data))
-  //   .catch(error => console.log('Error Fetching Status: ', error));
-  // }, []);
 
   // handle on change
   const handleOnChange = (e) => {
