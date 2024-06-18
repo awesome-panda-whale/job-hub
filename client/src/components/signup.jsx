@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './style CSS/signup.css'
+import './styleCSS/signup.css'
 import jobhub from '../assets/jobhub.png'
 
 const Signup = () => {
-  let navigate = useNavigate();
+  // let navigate = useNavigate();
   const handleClick = () => {
     navigate('/');
   };

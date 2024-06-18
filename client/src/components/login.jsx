@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import './style CSS/login.css'
+import './styleCSS/login.css'
 import jobhub from '../assets/jobhub.png'
 
 

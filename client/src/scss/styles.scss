@@ -38,6 +38,7 @@ body {
   flex-direction: column;
   padding: 20px;
   align-items: center;
+  
 }
 
 .header {
@@ -72,6 +73,8 @@ body {
   border-radius: 6px;
   border: 2px solid rgb(199, 197, 197);
   padding: 25px;
+  font-size: large;
+  font-weight: bold;
 }
 
 .dashboard-top-container {
@@ -121,4 +124,12 @@ body {
   height: 400px;
   overflow-y: scroll;
   width: 100%;
+}
+
+.placeholderText {
+  text-align: center;
+}
+
+.jobhub {
+  max-width: 80%;
 }
