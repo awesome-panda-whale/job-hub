@@ -42,6 +42,7 @@ const Signup = () => {
     <div className='signup-box'>
       <input type='text' id='username' name='username' placeholder='Username' />
       <input type='text' id='password' name='password' placeholder='Password' />
+      <input type='text' id='email' name='email' placeholder='email' />
       <input
         type='text'
         id='firstname'

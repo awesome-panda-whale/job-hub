@@ -1,10 +1,11 @@
 import React from 'react';
+// import Dashboard from '../components/Dashboard';
 import { useState } from 'react';
-import ApplicationList from './application-list-component/application-list.jsx';
-import Sidebar from './sidebar.jsx';
+// import ApplicationList from './application-list-component/application-list.jsx';
+// import Sidebar from './sidebar.jsx';
 
 const Dashboard = () => {
-  const [dateApplied, setDateApplied] = useState('');
+    const [dateApplied, setDateApplied] = useState('');
   const [appStatus, setAppStatus] = useState(''); 
 
   const handleOnChange = (e) => {
@@ -62,14 +63,14 @@ const Dashboard = () => {
               Submit
             </button>
           </form>
-          <ApplicationList />
+          {/* <ApplicationList /> */}
         </div>
-        <Sidebar />
+        {/* <Sidebar /> */}
         
       </div>
       
     </div>
   );
-};
+}
 
 export default Dashboard;

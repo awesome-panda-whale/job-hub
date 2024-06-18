@@ -67,3 +67,9 @@ VALUES
 (17, 'STOP');
 
 select * from Status;
+
+CREATE TABLE Users_Applications (
+  user_id INT NOT NULL REFERENCES Users(id),
+  application_id INT NOT NULL REFERENCES Applications(id),
+  PRIMARY KEY (user_id, application_id)
+);

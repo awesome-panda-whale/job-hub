@@ -2,8 +2,10 @@ const express = require('express');
 // const { restart } = require('nodemon');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const routerSignup = require('./routes/users');
-const applicationsRouter = require('./routes/applications');
+const userController = require('./controllers/userController');
+const db = require('./models/userModels')
+// const routerSignup = require('./routes/users');
+const userRoutes = require("./routes/users");
 
 const app = express();
 // const path = require('path');
@@ -11,20 +13,14 @@ const app = express();
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(cors());
+app.use("/", userRoutes);
 
-// statically serve everything in the build folder on the route '/build'
-// app.use('/build', express.static(path.join(__dirname, '../build')));
-// serve index.html on the route '/'
-app.get('/*', function(req, res){
-    res.sendFile(path.join(__dirname, '../public/index.html'), function(err){
-        if(err){
-            res.status(500).send(err)
-        }
-    })
-})
-
-app.use('/users', routerSignup);
-app.use('/applications', applicationsRouter);
+// test
+app.get('/testdb', async (req, res) => {
+  const result = await db.query('SELECT * FROM users LIMIT 1')
+  console.log('result', result);
+  res.status(200).json(result)
+});
 
 // Global error handler: 
 app.use((err, req, res, next) => {
