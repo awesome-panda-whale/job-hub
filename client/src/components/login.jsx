@@ -14,8 +14,8 @@ const Login = () => {
   async function loginAccount(event) {
     event.preventDefault();
 
-    const newUsername = document.getElementById('usernameInput');
-    const newPassword = document.getElementById('passwordInput');
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
     // console.log(newUsername.value);
     // console.log(newPassword.value);
 
@@ -28,8 +28,8 @@ const Login = () => {
         },
         method: 'POST',
         body: JSON.stringify({
-          username: newUsername.value,
-          password: newPassword.value,
+          username: username,
+          password: password,
         }),
       });
       console.log('response ', response);
@@ -60,11 +60,11 @@ const Login = () => {
         <form /*onSubmit={handleSubmit}*/ id='loginform'>
           Username{' '}
           {/* onChange={storeUsername} */}
-          <input type='text'id='usernameInput'></input>
+          <input type='text'id='username'></input>
           <br></br>
           Password{' '}
           {/* onChange={storePassword} */}
-          <input type='password' id='passwordInput'></input>
+          <input type='password' id='password'></input>
           <button type='submit' id='loginButton' onClick={loginAccount}>Login!</button>
         </form>
       </div>
