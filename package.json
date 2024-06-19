@@ -6,7 +6,7 @@
   "license": "ISC",
   "scripts": {
     "start": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "nodemon server/server.js",
+    "server": "npm start --prefix server",
     "client": "npm start --prefix client"
   },
   "dependencies": {
