@@ -29,7 +29,6 @@ const Signup = () => {
     for(let i = 0; i < input.length; i++){
       if(!input[i] || input[i].trim() === '') 
         return setError('Please fill up all the fields')
-      
     }
 
     fetch('http://localhost:3000/users/signup', {
