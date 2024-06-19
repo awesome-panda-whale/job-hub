@@ -9,7 +9,8 @@ const Signup = () => {
     navigate('/');
   };
 
-  const [error, setError] = useState('')
+  const [error, setError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
   function createAccount() {
     setError('')
@@ -48,6 +49,7 @@ const Signup = () => {
       .then(res => res.json())
       .then(data => {
         console.log('signup data', data);
+        setSuccessMessage('Successfully Created Account');
         navigate('/');
       })
       .catch(error => {

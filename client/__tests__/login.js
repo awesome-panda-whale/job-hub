@@ -12,6 +12,7 @@ describe('Unit testing Login components', () => {
     text = render(
       <Router>   
         <Routes>
+          
           <Route path='/' element={<Login />} />
         </Routes>
       </Router>
