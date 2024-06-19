@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import './style CSS/login.css'
+import './styleCSS/login.css'
 import jobhub from '../assets/jobhub.png'
 
 
@@ -58,17 +58,17 @@ const Login = () => {
       <h1>Welcome! 🤟</h1>
       <div className='form-container'>
         <form /*onSubmit={handleSubmit}*/ id='loginform'>
-          Username{' '}
+          Username
           {/* onChange={storeUsername} */}
-          <input type='text'id='username'></input>
+          <input type='text'id='username' name='username'></input>
           <br></br>
-          Password{' '}
+          Password
           {/* onChange={storePassword} */}
-          <input type='password' id='password'></input>
-          <button type='submit' id='loginButton' onClick={loginAccount}>Login!</button>
+          <input type='password' id='password' name='password'></input>
+          <button type='submit' id='login' name='login' onClick={loginAccount}>Login</button>
         </form>
       </div>
-      <button onClick={handleClick} id='signup'>Create an Account</button>
+      <button onClick={handleClick} id='signup' name='signup'>Create an Account</button>
     </div>
   );
 };

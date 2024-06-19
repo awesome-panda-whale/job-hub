@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './style CSS/signup.css'
+import './styleCSS/signup.css'
 import jobhub from '../assets/jobhub.png'
 
 const Signup = () => {
@@ -29,7 +29,6 @@ const Signup = () => {
     for(let i = 0; i < input.length; i++){
       if(!input[i] || input[i].trim() === '') 
         return setError('Please fill up all the fields')
-      
     }
 
     fetch('http://localhost:3000/users/signup', {
