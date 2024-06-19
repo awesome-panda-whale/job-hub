@@ -48,7 +48,7 @@ const Signup = () => {
       .then(res => res.json())
       .then(data => {
         console.log('signup data', data);
-        navigate('/users/dashboard');
+        navigate('/');
       })
       .catch(error => {
         setError('Error on signing up');

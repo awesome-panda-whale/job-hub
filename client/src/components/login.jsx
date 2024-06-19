@@ -1,23 +1,20 @@
-import React from 'react';
+import React, { useState, useContext } from "react";
+import { AuthContext } from "../Contexts/AuthContext";
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
 import './styleCSS/login.css'
 import jobhub from '../assets/jobhub.png'
 
 
 const Login = () => {
-  let navigate = useNavigate();
-  const handleClick = () => {
-    navigate('users/signup');
-  };
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   async function loginAccount(event) {
     event.preventDefault();
 
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-    // console.log(newUsername.value);
-    // console.log(newPassword.value);
 
     try {
       const response = await fetch('http://localhost:3000/users/login', {
@@ -31,22 +28,26 @@ const Login = () => {
           password: password,
         }),
       });
-      const data = await response.json();
-      if (!data.err) {
-        navigate('/users/dashboard');
+      console.log("Response:", response);
+      if (response.ok) {
+        const data = await response.json();
+        console.log("data", data);
+        if (data.success) {
+          const userId = data.data.userId;
+          const username = data.data.username;
+          console.log("User ID:", userId);
+          console.log("Username:", username);
+
+          login(username, userId);
+        }
+      } else {
+        console.error("Failed to login, status:", response.status);
       }
-      else console.log(data.err)
     } catch (err) {
-      alert('bad');
+      console.error("Error during fetch:", err);
+      alert("bad");
     }
-    // .then((data) => data.json())
-    // .then((data) => {
-    //   console.log('this is fetch response', data);
-    // })
-    // .catch(function (res) {
-    //   alert('bad');
-    // });
-  }
+  };
 
   return (
     <div className='login-container'>
@@ -54,19 +55,28 @@ const Login = () => {
         <img src={jobhub} alt="" />
       </div>
       <h1>Welcome! 🤟</h1>
-      <div className='form-container'>
-        <form /*onSubmit={handleSubmit}*/ id='loginform'>
-          Username
-          {/* onChange={storeUsername} */}
-          <input type='text'id='username' name='username'></input>
-          <br></br>
-          Password
-          {/* onChange={storePassword} */}
-          <input type='password' id='password' name='password'></input>
-          <button type='submit' id='login' name='login' onClick={loginAccount}>Login</button>
+      <div className="form-container">
+        <form id="loginform" onSubmit={loginAccount}>
+          <input
+            type="text"
+            value={username}
+            onChange={(uv) => setUsername(uv.target.value)}
+            placeholder="Username"
+          />
+          <input
+            type="password"
+            value={password}
+            onChange={(pv) => setPassword(pv.target.value)}
+            placeholder="Password"
+          />
+          <button type="submit" id="loginButton">
+            Login!
+          </button>
         </form>
       </div>
-      <button onClick={handleClick} id='signup' name='signup'>Create an Account</button>
+      <button onClick={() => navigate("users/signup")} id="signup">
+        Create an Account
+      </button>
     </div>
   );
 };
