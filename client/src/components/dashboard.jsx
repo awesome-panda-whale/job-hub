@@ -1,19 +1,22 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useContext } from 'react';
 import ApplicationList from './application-list-component/application-list.jsx';
 import Sidebar from './sidebar';
-import jobhub from '../assets/jobhub.png'
+import { AuthContext } from "../Contexts/AuthContext";
+
 
 const dashboard = () => {
+  const { userId } = useContext(AuthContext);
+  const [applicationUpdated, setApplicationUpdated] = useState(false);
   const [formData, setFormData] = useState({
-    company:"",
-    position:"",
-    url:"",
-    date_applied:"",
-    status_id:"",
-    contact:"",
-    email:"",
-    notes:"",
+    company: "",
+    position: "",
+    url: "",
+    date_applied: "",
+    status_id: "",
+    contact: "",
+    email: "",
+    notes: "",
   });
   const [message, setMessage] = useState(""); 
   const [error, setError] = useState("");
@@ -37,6 +40,10 @@ const dashboard = () => {
     { id: 17, status: 'STOP' }
   ]);
 
+  const handleApplicationUpdate = () => {
+    setApplicationUpdated(!applicationUpdated);
+  };
+
   // handle on change
   const handleOnChange = (e) => {
     e.preventDefault();
@@ -49,16 +56,20 @@ const dashboard = () => {
     setMessage('');
     setError('');
     let responseData;
-    console.log(formData);
+    console.log('formdata!!!!',formData);
     try {
-      const response = await fetch("http://localhost:3000/applications/submitForm", {
-        method: "POST",
-        headers: {
-          Accept: "application/form-data",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        `http://localhost:3000/application/${userId}`,
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/form-data",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+
 
       if (!response.ok) {
         throw new Error('Server responded with an error!');
@@ -66,7 +77,8 @@ const dashboard = () => {
 
       const responseData = await response.json();
       if (responseData.success) {
-        setMessage("Login Successfully!");
+        setMessage("Submit Successfully!");
+        handleApplicationUpdate();
       } else {
         setError(responseData.message);
       }
@@ -193,7 +205,7 @@ const dashboard = () => {
           </form>
           <ApplicationList />
         </div>
-        <Sidebar />     
+        <Sidebar onApplicationUpdate={handleApplicationUpdate} />  
       </div>
     </div>
   );
