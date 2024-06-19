@@ -13,9 +13,13 @@ const ApplicationCard = ({companyName, dateApplied, status, position, compContIn
   };
 
   return (
-    <div>
-      {/* Job Application Form Component */}
-    {/* <JobApplicationForm onSubmit={handleAddApplication} /> */}
+    // <div className = "application-card">
+    //   <h3>{companyName}</h3>
+    //   <p>Date Applied: {dateApplied}</p>
+    //   <p>Status: {status}</p>
+    //   <p>Role: {role}</p>
+    //   <p>Notes: {notes}</p>
+    // <div>
 
     <div className="applications-list">
       {applications.map((app, index) => (
@@ -30,7 +34,6 @@ const ApplicationCard = ({companyName, dateApplied, status, position, compContIn
         />
       ))}
     </div>
-  </div>
   );
 };
 export default ApplicationCard;

@@ -13,11 +13,11 @@ app.use("/users", userRoutes);
 app.use("/", applicationRoutes);
 
 // test
-app.get("/testdb", async (req, res) => {
-  const result = await db.query("SELECT * FROM users LIMIT 1");
-  console.log("result", result);
-  res.status(200).json(result);
-});
+// app.get("/testdb", async (req, res) => {
+//   const result = await db.query("SELECT * FROM users LIMIT 1");
+//   console.log("result", result);
+//   res.status(200).json(result);
+// });
 
 // Global error handler:
 app.use((err, req, res, next) => {
