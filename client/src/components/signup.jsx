@@ -11,6 +11,7 @@ const Signup = () => {
 
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
+  // setSuccessMessage('')
 
   function createAccount() {
     setError('')
@@ -77,6 +78,7 @@ const Signup = () => {
         <input type='email' id='email' name='email' placeholder='Email' />
         {error && <div className='error'>{error}</div>}
         <button type='button' onClick={createAccount}>Sign Up</button>
+        {successMessage && <div>{successMessage}</div>}
       </div>
       <button onClick={handleClick} id='signup'>Already have an account?</button>
     </div>

@@ -8,7 +8,7 @@ export default function ApplicationList() {
       const fetchApplications = async () => {
         try {
           //replace userId with actual ID from authentication or context
-          const userId = 2;
+          const userId = 1;
           const response = await fetch(`http://localhost:3000/applications/${userId}`);
           const data = await response.json();
           setApplications(data);
@@ -21,7 +21,7 @@ export default function ApplicationList() {
     }, []);  
   return (
     <div className='application-list' id="application_list" >
-      {applications.map((app) => (
+      {applications && applications.map((app) => (
          <ApplicationCard
         key={app.id}
         companyName={app.company}

@@ -7,6 +7,12 @@ applicationController.createApp = async (req, res, next) => {
     const { company, position, url, status_id, contact, email, notes } =
       req.body;
     const { userId } = req.params;
+    if (!company || !position ) {
+      return res.status(400).json({
+        log: 'Company and position should not be empty',
+        message: 'Company and position should not be empty'
+      });
+    } 
 
     const params = [company, position, url, status_id, contact, email, notes];
     console.log("parms!!!!!!",params);
