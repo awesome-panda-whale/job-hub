@@ -9,7 +9,9 @@ const Signup = () => {
     navigate('/');
   };
 
-  const [error, setError] = useState('')
+  const [error, setError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+  // setSuccessMessage('')
 
   function createAccount() {
     setError('')
@@ -48,6 +50,7 @@ const Signup = () => {
       .then(res => res.json())
       .then(data => {
         console.log('signup data', data);
+        setSuccessMessage('Successfully Created Account');
         navigate('/');
       })
       .catch(error => {
@@ -75,6 +78,7 @@ const Signup = () => {
         <input type='email' id='email' name='email' placeholder='Email' />
         {error && <div className='error'>{error}</div>}
         <button type='button' onClick={createAccount}>Sign Up</button>
+        {successMessage && <div>{successMessage}</div>}
       </div>
       <button onClick={handleClick} id='signup'>Already have an account?</button>
     </div>

@@ -63,7 +63,7 @@ const dashboard = () => {
         {
           method: "POST",
           headers: {
-            Accept: "application/form-data",
+            Accept: "application/json",
             "Content-Type": "application/json",
           },
           body: JSON.stringify(formData),
@@ -97,7 +97,7 @@ const dashboard = () => {
             <h1>Job Application Form:</h1>
 
             <div className="input-field">
-              <label htmlFor="company">Company Name: </label>
+              <label htmlFor="company">Company Name</label>
               <input
               type='text'
               id ='company'
@@ -136,7 +136,7 @@ const dashboard = () => {
               <label htmlFor="date_applied">Date Applied</label>
               <input
               type='date'
-              id='start'
+              id='date_applied'
               name='date_applied'
               value={formData.date_applied}
               min='2024-01-01'
@@ -146,7 +146,7 @@ const dashboard = () => {
             </div>
              
             <div className="input-field">
-              <label htmlFor='staus'>Status</label>
+              <label htmlFor='status'>Status</label>
               <select name='status_id' id='status' value={formData.status_id} onChange={handleOnChange}>
                 <option value='' disabled selected hidden>
                   Select App Status...
@@ -203,9 +203,9 @@ const dashboard = () => {
             {error !== ''? (<div style={ {color : "red"} }>{error}</div>):(<></>)}
 
           </form>
-          <ApplicationList />
+          {/* <ApplicationList /> */}
         </div>
-        <Sidebar onApplicationUpdate={handleApplicationUpdate} />  
+        {/* <Sidebar onApplicationUpdate={handleApplicationUpdate} />   */}
       </div>
     </div>
   );
