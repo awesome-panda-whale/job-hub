@@ -40,6 +40,10 @@ body {
   align-items: center;
 }
 
+.dashboard-top-container {
+  margin-top: 30px;
+}
+
 .header {
   font-family: 'Roboto', Arial, sans-serif;
   font-size: 60px;
@@ -68,10 +72,32 @@ body {
 .inputs {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   width: 400px;
   border-radius: 6px;
   border: 2px solid rgb(199, 197, 197);
   padding: 25px;
+  margin-top: 300px;
+}
+
+.input-field{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.btn {
+  width: 100%;
+}
+
+.input-field label {
+  flex: 0 0 150px;
+}
+.input-field input {
+  flex: 1;
+  padding: 8px;
 }
 
 .dashboard-top-container {
@@ -121,4 +147,12 @@ body {
   height: 400px;
   overflow-y: scroll;
   width: 100%;
+}
+
+.placeholderText {
+  text-align: center;
+}
+
+.jobhub {
+  max-width: 80%;
 }

@@ -1,21 +1,38 @@
-const express = require('express');
-const applicationController = require('../controllers/applicationsController');
+const express = require("express");
+const applicationController = require("../controllers/applicationsController");
 const applicationsRouter = express.Router();
 
-applicationsRouter.post('/application', applicationController.createApp, (req, res) => {
-    return res.status(200).json(res.locals.createApp);
-});
+applicationsRouter.post(
+  "/application/:userId",
+  applicationController.createApp,
+  (req, res) => {
+    return res
+      .status(200)
+      .json({ success: true, application: res.locals.application });
+  }
+);
 
-applicationsRouter.get('/application/:id', applicationController.getApp, (req, res) => {
-    return res.status(200).json(res.locals.getApp);
-});
+applicationsRouter.get(
+  "/application/:userId",
+  applicationController.getAppsByUserId,
+  (req, res) => {
+    return res.status(200).json(res.locals.applications);
+  }
+);
 
-// applicationsRouter.patch('/', (req, res) => {
-    
-// });
+applicationsRouter.put(
+  "/application/:userId",
+  applicationController.updateApplicationsByUserId,
+  (req, res) => {
+    return res.status(200).json({ success: true });
+  }
+);
 
-// applicationRouter.delete('/signup', userController.hashing, userController.createUser, (req, res) => {
-
-// })
-
+  applicationsRouter.get(
+    "/total-applications/:userId",
+    applicationController.getTotalApplications,
+    (req, res) => {
+      return res.status(200).json(res.locals.totalApplications);
+    }
+  );
 module.exports = applicationsRouter;
