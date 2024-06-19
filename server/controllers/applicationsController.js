@@ -59,4 +59,29 @@ applicationController.getApp = async (req, res, next) => {
   }
 };
 
+applicationController.getAllAppsForUser = async (req, res, next) => {
+  console.log('getting all apps for user', req)
+  try {
+    const { user_id } = req.params;
+    const query = `SELECT a.id, a.company, a.position, a.url, a.date_applied, a.status_id, a.contact, a.email, a.notes
+    FROM applications a
+    INNER JOIN users_applications ua ON a.id = ua.application_id
+    WHERE ua.user_id = $1`;
+    const params = [user_id];
+
+    const data = await db.query(query, params);
+    console.log('getting all uer applications', data);
+    res.locals.applications = data.rows;
+    return next();
+  } catch (err) {
+    console.log(err);
+    return next({
+      log: 'Error in applicationController.getAllAppsForUser',
+      status: 500,
+      message: { err: 'Error occured while retrieving applications'
+      }
+    })
+  }
+}
+
 module.exports = applicationController;

@@ -5,7 +5,7 @@ const cors = require('cors');
 const path = require('path');
 const routerSignup = require('./routes/users');
 const applicationController = require('./controllers/applicationsController');
-
+// const db = require("./models/userModels");
 const app = express();
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -15,19 +15,36 @@ app.use(cors());
 // statically serve everything in the build folder on the route '/build'
 // app.use('/build', express.static(path.join(__dirname, '../build')));
 // serve index.html on the route '/'
-app.get('/*', function(req, res){
-    res.sendFile(path.join(__dirname, '../public/index.html'), function(err){
-        if(err){
-            res.status(500).send(err)
-        }
-    })
-})
+
+//testDB
+// app.get("/testdb", async (req, res) => {
+//   const result = await db.query("SELECT * FROM users LIMIT 1");
+//   console.log("result", result);
+//   res.status(200).json(result);
+// });
+
+// app.get('/*', function(req, res){
+//     res.sendFile(path.join(__dirname, '../public/index.html'), function(err){
+//         if(err){
+//             res.status(500).send(err)
+//         }
+//     })
+// })
 
 app.use('/users', routerSignup);
+
+//may need to change endpoint
+app.get('/application/:user_id', applicationController.getAllAppsForUser, (req, res) => {
+  console.log('1234')
+  res.status(200).json(res.locals.applications);
+})
+
 app.post('/application', applicationController.createApp,  (req, res ) => {
   res.status(200).json(res.locals.application)
 });
-app.get('/application/:userID, ')
+
+
+
 // Global error handler:
 app.use((err, req, res, next) => {
   const defaultErr = {
