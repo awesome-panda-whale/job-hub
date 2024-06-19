@@ -64,15 +64,15 @@ const Signup = () => {
       </div>
       <h1>Welcome! 🤟</h1>
       <div className='container'>
-        <label for="username">Username</label>
+        <label htmlFor='username'>Username</label>
         <input type='text' id='username' name='username' placeholder='Username' />
-        <label for="password">Password</label>
+        <label htmlFor="password">Password</label>
         <input type='password' id='password' name='password' placeholder='Password' />
-        <label for="firstname">Firstname</label>
+        <label htmlFor="firstname">Firstname</label>
         <input type='text' id='firstname' name='firstname' placeholder='Firstname' />
-        <label for="lastname">Lastname</label>
+        <label htmlFor="lastname">Lastname</label>
         <input type='text' id='lastname' name='lastname' placeholder='Lastname' />
-        <label for="email">Email</label>
+        <label htmlFor="email">Email</label>
         <input type='email' id='email' name='email' placeholder='Email' />
         {error && <div className='error'>{error}</div>}
         <button type='button' onClick={createAccount}>Sign Up</button>

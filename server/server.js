@@ -6,6 +6,7 @@ const path = require('path');
 const routerSignup = require('./routes/users');
 const applicationsRouter = require('./routes/applications');
 const applicationController = require('./controllers/applicationsController');
+const userController = require('./controllers/userController')
 
 const app = express();
 // const path = require('path');

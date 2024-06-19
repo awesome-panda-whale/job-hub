@@ -20,7 +20,6 @@ const Login = () => {
     // console.log(newPassword.value);
 
     try {
-      console.log('before fetch');
       const response = await fetch('http://localhost:3000/users/login', {
         headers: {
           Accept: 'application/json',
@@ -32,12 +31,11 @@ const Login = () => {
           password: newPassword.value,
         }),
       });
-      console.log('response ', response);
       const data = await response.json();
-      if (data) {
+      if (!data.err) {
         navigate('/users/dashboard');
       }
-      console.log(data);
+      else console.log(data.err)
     } catch (err) {
       alert('bad');
     }
