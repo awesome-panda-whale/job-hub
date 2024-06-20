@@ -42,7 +42,7 @@ export const AuthProvider = ({ children }) => {
     });
     localStorage.removeItem("username");
     localStorage.removeItem("userId");
-    navigate("users/login");
+    navigate("/");
   };
 
   return (

@@ -8,7 +8,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <Link to="/" className="navbar-logo">
+        <Link to="/application" className="navbar-logo">
           JobHub
         </Link>
         <ul className="navbar-menu">

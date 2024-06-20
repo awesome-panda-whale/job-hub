@@ -3,7 +3,7 @@ import { AuthContext } from "../Contexts/AuthContext";
 import "./styleCSS/application.css";
 
 const Application = () => {
-  const { userId } = useContext(AuthContext);
+  const { userId, logout } = useContext(AuthContext);
   const [applications, setApplications] = useState([]);
   const [message, setMessage] = useState(""); 
   const [statuses, setStatuses] = useState([
@@ -25,6 +25,10 @@ const Application = () => {
     // { id: 16, status: "Other" },
     // { id: 17, status: "STOP" },
   ]);
+
+  if(!userId) {
+    logout();
+  }
 
   const fetchApplications = async () => {
     try {
@@ -56,7 +60,7 @@ const Application = () => {
       setError("Couldn't fetch statuses");
     }
   }, [])
-  
+
   useEffect(() => {
     fetchApplications();
   }, [userId]);

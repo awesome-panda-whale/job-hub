@@ -6,7 +6,7 @@ import { AuthContext } from "../Contexts/AuthContext";
 
 
 const dashboard = () => {
-  const { userId } = useContext(AuthContext);
+  const { userId, logout } = useContext(AuthContext);
   const [applicationUpdated, setApplicationUpdated] = useState(false);
   const [formData, setFormData] = useState({
     company: "",
@@ -39,6 +39,10 @@ const dashboard = () => {
     // { id: 16, status: 'Other' },
     // { id: 17, status: 'STOP' }
   ]);
+
+  if(!userId) {
+    logout();
+  }
 
   useEffect(() => {
     try {
