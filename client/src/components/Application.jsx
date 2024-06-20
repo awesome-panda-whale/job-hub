@@ -68,6 +68,11 @@ const Application = () => {
 
   const [editing, setEditing] = useState(false);
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString();
+  };
+
   const handleSave = async () => {
     try {
       const response = await fetch(
@@ -95,7 +100,10 @@ const Application = () => {
 
   return (
     <div className="application-container">
-      <h1>Applications</h1>
+      <div className="application-header">
+        <h1>Applications</h1>
+        <span>{applications.length}</span>
+      </div>
       <table className="application-table">
         <thead>
           <tr>
@@ -123,7 +131,7 @@ const Application = () => {
                   {application.url}
                 </a>
               </td>
-              <td>{application.date_applied}</td>
+              <td>{formatDate(application.date_applied)}</td>
               <td>
                 <select
                   value={application.status_id}
@@ -156,7 +164,9 @@ const Application = () => {
       <div className="button-container">
         <button onClick={handleSave}>Save</button>
       </div>
-      {message !== ''? (<div style={ {color : "pink"} }>{message}</div>):(<></>)}
+      <div className={message !== '' ? 'message-box': 'hidden'}>
+        {message}
+      </div>
     </div>
   );
 };

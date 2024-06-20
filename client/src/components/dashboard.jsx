@@ -94,7 +94,7 @@ const dashboard = () => {
       <div className='dashboard-top-container'> 
         <div className='form_box'>
           <form className='inputs' onSubmit={handleSubmit}>
-            <h1>Job Application Form:</h1>
+            <h1>Job Application Form</h1>
 
             <div className="input-field">
               <label htmlFor="company">Company Name</label>
