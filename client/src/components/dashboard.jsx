@@ -90,7 +90,6 @@ const dashboard = () => {
   return (
     <div className='main'>
       <br></br>
-      {/* <h1 className='header'>JobHub</h1> */}
       <div className='dashboard-top-container'> 
         <div className='form_box'>
           <form className='inputs' onSubmit={handleSubmit}>
