@@ -3,7 +3,7 @@ import { render, screen, waitFor, fireEvent } from '@testing-library/react';
 import {  BrowserRouter as Router, Route, Routes, MemoryRouter } from 'react-router-dom';
 import '@testing-library/jest-dom';
 import Login from '../src/components/login.jsx';
-import { AuthContext } from "../src/Contexts/AuthContext";
+import { AuthContext } from "../src/Contexts/AuthContext.js";
 
 
 // Frontend Test: User Successful Login

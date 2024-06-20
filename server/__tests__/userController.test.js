@@ -4,14 +4,14 @@ const app = require("../server.js");
 const db = require("../models/userModels");
 const bcrypt = require("bcrypt");
 
-const test = jest.setTimeout(30000);
+jest.setTimeout(30000);
 
 describe("User Controller", () => {
   let server;
   let port;
 
-  beforeAll(async (done) => {
-    server = app.listen(0);
+  beforeAll(async () => {
+    server = app.listen(0); // random port for server
     port = server.address().port;
 
     const hashedPassword = await bcrypt.hash("testpassword", 10);
@@ -24,8 +24,7 @@ describe("User Controller", () => {
     await db.query(
         `DELETE FROM users WHERE username = 'testuser135'`
       );
-    clearTimeout(test)
-    await server.close((done) => {done()});
+    await server.close();
   });
 
   describe("POST /users/login", () => {
