@@ -28,11 +28,19 @@ applicationsRouter.put(
   }
 );
 
-  applicationsRouter.get(
-    "/total-applications/:userId",
-    applicationController.getTotalApplications,
-    (req, res) => {
-      return res.status(200).json(res.locals.totalApplications);
-    }
-  );
+applicationsRouter.get(
+  "/total-applications/:userId",
+  applicationController.getTotalApplications,
+  (req, res) => {
+    return res.status(200).json(res.locals.totalApplications);
+  }
+);
+
+applicationsRouter.get(
+  "/statuses",
+  applicationController.getStatuses,
+  (req, res) => {
+    return res.status(200).json(res.locals.statuses);
+  }
+)
 module.exports = applicationsRouter;

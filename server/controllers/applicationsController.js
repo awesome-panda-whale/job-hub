@@ -96,6 +96,7 @@ applicationController.getAllAppsForUser = async (req, res, next) => {
     })
   }
 }
+
 applicationController.updateApplicationsByUserId = async (req, res, next) => {
   try {
     const { userId } = req.params;
@@ -146,5 +147,21 @@ applicationController.getTotalApplications = async (req, res, next) => {
     });
   }
 };
+
+applicationController.getStatuses = async (req, res, next) => {
+  try {
+    const query = `SELECT * FROM status`;
+    const result = await db.query(query);
+    res.locals.statuses = result.rows
+    return next();
+  } catch (error) {
+    console.error("Error getting statuses:", error);
+    return next({
+      log: "Error in applicationController.getStatuses",
+      status: 500,
+      message: { err: "An error occurred while getting statuses" },
+    });
+  }
+}
 
 module.exports = applicationController;

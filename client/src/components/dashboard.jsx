@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import ApplicationList from './application-list-component/application-list.jsx';
 import Sidebar from './sidebar';
 import { AuthContext } from "../Contexts/AuthContext";
@@ -21,24 +21,39 @@ const dashboard = () => {
   const [message, setMessage] = useState(""); 
   const [error, setError] = useState("");
   const [statuses, setStatuses] = useState([
-    { id: 1, status: 'Need to Apply' },
-    { id: 2, status: 'Applied' },
-    { id: 3, status: 'Phone Interview' },
-    { id: 4, status: 'Online Assessment' },
-    { id: 5, status: 'Initial Interview' },
-    { id: 6, status: 'Second Interview' },
-    { id: 7, status: 'Third Interview' },
-    { id: 8, status: 'Technical Interview' },
-    { id: 9, status: 'Behavioral Interview' },
-    { id: 10, status: 'Final Interview' },
-    { id: 11, status: 'Have not heard back' },
-    { id: 12, status: 'Considering' },
-    { id: 13, status: 'Offer' },
-    { id: 14, status: 'Rejected' },
-    { id: 15, status: 'Ghost' },
-    { id: 16, status: 'Other' },
-    { id: 17, status: 'STOP' }
+    // { id: 1, status: 'Need to Apply' },
+    // { id: 2, status: 'Applied' },
+    // { id: 3, status: 'Phone Interview' },
+    // { id: 4, status: 'Online Assessment' },
+    // { id: 5, status: 'Initial Interview' },
+    // { id: 6, status: 'Second Interview' },
+    // { id: 7, status: 'Third Interview' },
+    // { id: 8, status: 'Technical Interview' },
+    // { id: 9, status: 'Behavioral Interview' },
+    // { id: 10, status: 'Final Interview' },
+    // { id: 11, status: 'Have not heard back' },
+    // { id: 12, status: 'Considering' },
+    // { id: 13, status: 'Offer' },
+    // { id: 14, status: 'Rejected' },
+    // { id: 15, status: 'Ghost' },
+    // { id: 16, status: 'Other' },
+    // { id: 17, status: 'STOP' }
   ]);
+
+  useEffect(() => {
+    try {
+      const fetchData = async () => {
+        const response = await fetch(`http://localhost:3000/statuses`);
+        const result = await response.json();
+        console.log("result", result);
+        setStatuses(result);
+      }
+
+      fetchData();
+    } catch(err) {
+      setError("Couldn't fetch statuses");
+    }
+  }, [])
 
   const handleApplicationUpdate = () => {
     setApplicationUpdated(!applicationUpdated);
