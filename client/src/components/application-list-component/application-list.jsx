@@ -1,29 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState} from 'react';
 import ApplicationCard from '../application-card-component/application-card';
+
 export default function ApplicationList() {
+  const [applications, setApplications] = useState([]);
+
+    useEffect(() =>{
+      const fetchApplications = async () => {
+        try {
+          //replace userId with actual ID from authentication or context
+          const userId = 1;
+          const response = await fetch(`http://localhost:3000/applications/${userId}`);
+          const data = await response.json();
+          setApplications(data);
+        } catch(err) {
+          console.error('Error fetching applications:', err);
+        }
+      };
+      
+      fetchApplications();
+    }, []);  
   return (
     <div className='application-list' id="application_list" >
-      <ApplicationCard
-        companyName={'McDonalds'}
-        dateApplied={'10 / 25 / 2023'}
-        status={'Applied'}
-        role={'Branch Manager'}
-        notes={'Am I aiming too high???'}
-      />
-      <ApplicationCard
-        companyName={'Wendys'}
-        dateApplied={' 02 / 22 / 2024'}
-        status={'Rejected'}
-        role={'Cashier'}
-        notes={'Manager said I have to be better at math'}
-      />
-      <ApplicationCard
-        companyName={'Burger King'}
-        dateApplied={'04 / 15 / 2024'}
-        status={'Have not heard back'}
-        role={'Custodian'}
-        notes={'Please hire me!!!'}
-      />
+      {applications && applications.map((app) => (
+         <ApplicationCard
+        key={app.id}
+        companyName={app.company}
+        dateApplied={new Date(app.date_applied).toLocaleDateString()}
+        status={app.status_id}
+        role={app.position}
+        notes={app.notes}
+        />
+      ))}
     </div>
   );
 }
