@@ -5,7 +5,6 @@ const userRoutes = require("./routes/users");
 const applicationRoutes = require("./routes/applications");
 
 const app = express();
-
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cors());

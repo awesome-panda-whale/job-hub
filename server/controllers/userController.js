@@ -19,7 +19,7 @@ userController.hashing = async (req, res, next) => {
   }
 };
 
-userController.createUser = (req, res, next) => {
+userController.createUser = async (req, res, next) => {
   const { firstName, lastName, username, email } = req.body;
   const hashWord = res.locals.hashWord;
 
@@ -49,11 +49,11 @@ userController.verifyUser = async (req, res, next) => {
   //use bcrypt compare to check entered password and stored password
 
   if (!username) {
-    return {
-      log: "Error in userController.verifyUser, username is required",
-      message: "username is requeied",
-      status: 400,
-    };
+    return next({
+      log: 'Error in userController.verifyUser, username is required',
+      messgae: 'username is required',
+      status: 400
+    });
   }
 
   try {

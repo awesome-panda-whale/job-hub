@@ -45,7 +45,7 @@ const Login = () => {
       }
     } catch (err) {
       console.error("Error during fetch:", err);
-      alert("bad");
+      // alert("bad");
     }
   };
 
